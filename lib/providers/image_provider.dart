@@ -8,7 +8,7 @@ class PixabayImageProvider with ChangeNotifier {
   bool _isLoading = false;
   String? _error;
 
-  List<PixabayImage> get images => _images;
+  List<PixabayImage> get images => _images; // Add this getter
   bool get isLoading => _isLoading;
   String? get error => _error;
 
@@ -19,7 +19,7 @@ class PixabayImageProvider with ChangeNotifier {
     try {
       _images = await _apiService.fetchImages(query);
     } catch (e) {
-      _error = e.toString();
+      _error = 'Failed to load images: $e';
     }
     _isLoading = false;
     notifyListeners();

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/dashboard.dart';
-import 'screens/gallery.dart';
 import 'screens/profile.dart';
 import 'providers/image_provider.dart';
+import 'package:pixabay_dashboard/screens/gallery.dart' as app_gallery;
 
 void main() {
   runApp(
@@ -24,9 +24,11 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
 
-  void _toggleTheme(bool isDark) {
+  void _toggleTheme() {
     setState(() {
-      _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+      _themeMode = _themeMode == ThemeMode.dark
+          ? ThemeMode.light
+          : ThemeMode.dark;
     });
   }
 
@@ -49,7 +51,7 @@ class MyAppState extends State<MyApp> {
                       ? Icons.light_mode
                       : Icons.dark_mode,
                 ),
-                onPressed: () => _toggleTheme(_themeMode == ThemeMode.dark),
+                onPressed: _toggleTheme,
               ),
             ],
           ),
@@ -65,11 +67,11 @@ class MyAppState extends State<MyApp> {
                       ? Icons.light_mode
                       : Icons.dark_mode,
                 ),
-                onPressed: () => _toggleTheme(_themeMode == ThemeMode.dark),
+                onPressed: _toggleTheme,
               ),
             ],
           ),
-          body: const GalleryScreen(),
+          body: const app_gallery.GalleryScreen(),
         ),
         '/profile': (context) => Scaffold(
           appBar: AppBar(
@@ -81,7 +83,7 @@ class MyAppState extends State<MyApp> {
                       ? Icons.light_mode
                       : Icons.dark_mode,
                 ),
-                onPressed: () => _toggleTheme(_themeMode == ThemeMode.dark),
+                onPressed: _toggleTheme,
               ),
             ],
           ),

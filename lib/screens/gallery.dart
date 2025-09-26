@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import '../providers/image_provider.dart';
 import '../widgets/nav_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:vector_math/vector_math.dart' as vm;
 
 class GalleryScreen extends StatelessWidget {
   const GalleryScreen({super.key});
@@ -21,6 +20,13 @@ class GalleryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final imageProvider = Provider.of<PixabayImageProvider>(context);
     final TextEditingController controller = TextEditingController();
+
+    void searchImages() {
+      if (controller.text.isNotEmpty) {
+        imageProvider.fetchImages(controller.text);
+      }
+    }
+
     return Scaffold(
       body: Row(
         children: [
@@ -43,13 +49,18 @@ class GalleryScreen extends StatelessWidget {
                         ),
                         suffixIcon: IconButton(
                           icon: const Icon(Icons.search),
+                          color: controller.text.isNotEmpty
+                              ? null
+                              : Colors.grey, // Highlight when active
                           onPressed: controller.text.isNotEmpty
                               ? () {
-                                  imageProvider.fetchImages(controller.text);
+                                  FocusScope.of(context).unfocus();
+                                  searchImages();
                                 }
                               : null,
                         ),
                       ),
+                      onSubmitted: (_) => searchImages(),
                     ),
                   ),
                 ),
@@ -78,11 +89,6 @@ class GalleryScreen extends StatelessWidget {
                                 child: MouseRegion(
                                   child: AnimatedContainer(
                                     duration: const Duration(milliseconds: 200),
-                                    transform:
-                                        vm.Matrix4.identity().scaledByVector3(
-                                              vm.Vector3(1.0, 1.0, 1.0),
-                                            )
-                                            as Matrix4?,
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.stretch,

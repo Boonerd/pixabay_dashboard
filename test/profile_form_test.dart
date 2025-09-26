@@ -13,7 +13,7 @@ void main() {
       ),
     );
 
-    expect(find.byType(TextFormField), findsNWidgets(5));
+    expect(find.byType(TextFormField), findsNWidgets(4));
     expect(find.byType(DropdownButton), findsOneWidget);
     expect(find.text('Submit'), findsOneWidget);
 

@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import '../providers/image_provider.dart';
 import '../widgets/nav_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:vector_math/vector_math.dart' as vm;
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -50,11 +49,6 @@ class DashboardScreen extends StatelessWidget {
                           child: MouseRegion(
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 200),
-                              transform:
-                                  vm.Matrix4.identity().scaledByVector3(
-                                        vm.Vector3(1.0, 1.0, 1.0),
-                                      )
-                                      as Matrix4?,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
