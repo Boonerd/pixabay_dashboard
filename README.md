@@ -1,16 +1,26 @@
-# pixabay_dashboard
+# Pixabay Dashboard
 
-A new Flutter project.
+A modern Flutter web application that fetches and displays images from the Pixabay API, featuring a responsive UI, state management, and bonus functionalities.
+
+## Features
+- **Dashboard**: Displays trending Pixabay images.
+- **Gallery**: Searchable image gallery with filtering.
+- **Profile**: Form with validation and submission (extra credit unit tests).
+- **Responsive Design**: Adapts to desktop and mobile views.
+- **Dark Mode**: Toggleable theme.
+- **Hover Animations**: Enhanced UI interactions.
+- **State Management**: Uses Provider for API fetching, form handling, and search filtering.
+- **Error/Loading States**: Graceful handling of API responses.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
+- [Flutter SDK](https://flutter.dev/docs/get-started/install) (Channel stable, 3.35.4 or later)
+- [Git](https://git-scm.com/)
+- Web browser (Chrome recommended)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Boonerd/pixabay_dashboard.git
+   cd pixabay_dashboard
