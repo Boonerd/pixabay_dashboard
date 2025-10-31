@@ -1,4 +1,4 @@
-name: Deploy Flutter Web App to GitHub Pages
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
@@ -8,31 +8,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          flutter-version: '3.35.4'   # ✅ match your machine
+
+      - name: Enable web
+        run: flutter config --enable-web
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build Flutter Web
-        run: flutter build web --release --base-href "/pixabay_dashboard/"
+      - name: Build web
+        run: |
+          flutter build web --release --base-href="/pixabay_dashboard/" \
+            --dart-define=PIXABAY_API_KEY=${{ secrets.PIXABAY_API_KEY }}
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: build/web
-
-  deploy:
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
