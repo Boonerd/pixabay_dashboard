@@ -1,42 +1,66 @@
-# AI Text Summarizer
+# ✨ AI Text Summarizer
 
-A **beautiful, AI-powered** web app that summarizes text or documents (TXT, PDF, DOCX) using **Hugging Face Transformers**.
+A **modern, clean, AI-powered web application** that summarizes text or uploaded documents using **Hugging Face Transformers**.
 
-Live Demo: [https://ai-summarizer.boonerd.com](https://ai-summarizer.boonerd.com) *(coming soon)*
+### 🔗 Live Demo
+Frontend (Vercel): https://frontend-summarizer.vercel.app/  
+Backend (Render API): https://backend-portfolio-urvb.onrender.com/
 
-## Features
-- Paste text or upload files
-- Choose summary length: Short, Medium, Long
-- Dark mode toggle
-- Copy summary to clipboard
-- Fully responsive
+---
 
-## Tech Stack
-- **Frontend**: React + Tailwind CSS
-- **Backend**: Flask (Python)
-- **AI**: Hugging Face (`distilbart-cnn-6-6`)
-- **File Support**: PyPDF2, python-docx
+## 🚀 Features
+- Paste text or upload **TXT / PDF** files
+- Choose summary length: **Short**, **Medium**, or **Long**
+- **Dark / Light Mode** toggle
+- Copy & Download summary
+- Fully responsive UI (mobile & desktop friendly)
 
-## Setup
+---
+
+## 🧠 Tech Stack
+| Layer | Technology |
+|------|------------|
+| Frontend | React + TailwindCSS + Vite |
+| Backend | Flask (Python) |
+| AI Model | **facebook/bart-large-cnn** (via Hugging Face API) |
+| File Parsing | PyPDF2 |
+| Deployment | Vercel (Frontend) + Render (Backend) |
+
+---
+
+## 📁 Project Structure
+ai-text-summarizer/
+│
+├── frontend/ # React UI
+│ ├── src/App.jsx
+│ ├── index.css
+│ ├── vite.config.js
+│ └── package.json
+│
+└── backend/ # Flask API
+├── app.py
+├── requirements.txt
+└── .env (not committed)
+
+
+---
+
+## ⚙️ Setup Instructions
+
+### ✅ Backend Setup
 ```bash
-# Backend
+cd backend
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 python app.py
 
-# Frontend (new terminal)
+### ✅ Frontend Setup
 cd frontend
 npm install
-npm start
+npm run dev
 
-backend_portfolio/
-├── frontend/          # React + Tailwind UI
-│   ├── src/App.jsx    # Main UI with file/text input
-│   ├── tailwind.config.cjs
-│   └── package.json
-└── backend/           # Flask + AI
-├── app.py         # API endpoint /summarize
-└── requirements.txt
+👩🏾‍💻 Author
 
-Built with ❤️ by Patriciah Mbua
+Patriciah Mbua
+Crafting beautiful projects — one line of code at a time 💛
