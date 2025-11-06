@@ -45,7 +45,7 @@ function App() {
     formData.append('length', length);
 
     try {
-      const res = await fetch('http://localhost:5000/summarize', {
+      const res = await fetch('https://backend-portfolio-urvb.onrender.com/', {
         method: 'POST',
         body: formData,
       });
