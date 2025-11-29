@@ -1,24 +1,41 @@
+# .github/workflows/deploy.yml
 name: Deploy subfolder to GitHub Pages
+
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:   # lets you run it manually too
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pages: write
       id-token: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      # If your project needs building (React/Vite/Next.js/etc.)
+      # Uncomment and customize these lines:
+      # - name: Setup Node
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 20
+      #     cache: 'npm'
+      # - name: Install & Build
+      #   run: |
+      #     npm ci
+      #     npm run build
+      #     # If build output is in dist/, copy it to the folder you want:
+      #     cp -r dist/* pixabay_dashboard/
 
-      - name: Upload site from subfolder
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: pixabay_dashboard  # change this to your folder
+          path: pixabay_dashboard   # ← THIS MUST be the exact folder name
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
