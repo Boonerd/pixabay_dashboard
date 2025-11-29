@@ -35,7 +35,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: pixabay_dashboard   # ← THIS MUST be the exact folder name
+          path: ./pixabay_dashboard   # ← THIS MUST be the exact folder name
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
